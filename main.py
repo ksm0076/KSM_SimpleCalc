@@ -32,6 +32,9 @@ while True:
             print(num1, "*", num2, "=", Multiply.multiply(num1, num2))
             
         elif choice =='4':
+            while num2 == 0:
+                print("Can't divide by zero")
+                num2 = float(input("Enter second number: "))
             print(num1, "/", num2, "=", Divide.divide(num1,num2))
             
 
