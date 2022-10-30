@@ -36,13 +36,28 @@ while True:
                 print("Can't divide by zero")
                 num2 = float(input("Enter second number: "))
             print(num1, "/", num2, "=", Divide.divide(num1,num2))
-            
 
-        # check if user wants another calculation
-        # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
-            break
 
-    else:
-        print("Invalid Input")
+        while True:
+            # check if user wants another calculation
+            # break the while loop if answer is no
+            next_calculation = input("Let's do next calculation? (yes/no): ")
+            next_calculation = next_calculation.lower()
+            if next_calculation == "no":
+                while True:
+                    s = input("Are you sure? (yes/no):")
+                    s = s.lower()
+                    if s == "yes" :
+                        print("--Exit Program")
+                        exit(1)
+                    elif s == "no" :
+                        break
+                    else :
+                        print("Invalid Input")
+            elif next_calculation == "yes" :
+                break
+            else:
+                print("Invalid Input")
+                continue
+
+            break  # Are you sure? 에서 no가 입력되었을때만 작동
