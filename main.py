@@ -59,6 +59,8 @@ while True:
             logger.debug(m)
     else:   # 1, 2, 3, 4 이외의 입력
         logger.debug("Invalid Input in operation choice")
+        print("Invalid Input")
+        continue
     
 
 
