@@ -37,18 +37,23 @@ while True:
 
         if choice == '1':
             print(num1, "+", num2, "=", Add.add(num1, num2))
-
+            m = str(num1) + " + " + str(num2) + " = " + str(Add.add(num1,num2))
+            logger.debug(m)
         elif choice == '2':
             print(num1, "-", num2, "=", Subtract.subtract(num1, num2))
-
+            m = str(num1) + " - " + str(num2) + " = " + str(Subtract.subtract(num1, num2))
+            logger.debug(m)
         elif choice == '3':
             print(num1, "*", num2, "=", Multiply.multiply(num1, num2))
-            
+            m = str(num1) + " * " + str(num2) + " = " + str(Multiply.multiply(num1, num2))
+            logger.debug(m)
         elif choice =='4':
             while num2 == 0:
                 print("Can't divide by zero")
                 num2 = float(input("Enter second number: "))
             print(num1, "/", num2, "=", Divide.divide(num1,num2))
+            m = str(num1) + " / " + str(num2) + " = " + str(Divide.divide(num1,num2))
+            logger.debug(m)
 
 
         while True:
