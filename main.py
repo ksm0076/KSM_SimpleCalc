@@ -30,6 +30,7 @@ while True:
     # take input from the user
     choice = input("Enter choice(1/2/3/4): ")
 
+    
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
         num1 = float(input("Enter first number: "))
@@ -48,36 +49,42 @@ while True:
             m = str(num1) + " * " + str(num2) + " = " + str(Multiply.multiply(num1, num2))
             logger.debug(m)
         elif choice =='4':
-            while num2 == 0:
+            while num2 == 0 :
                 logger.debug("Try divide by zero")
                 print("Can't divide by zero")
                 num2 = float(input("Enter second number: "))
             print(num1, "/", num2, "=", Divide.divide(num1,num2))
             m = str(num1) + " / " + str(num2) + " = " + str(Divide.divide(num1,num2))
             logger.debug(m)
+    else:   # 1, 2, 3, 4 이외의 입력
+        logger.debug("Invalid Input in operation choice")
+    
 
 
-        while True:
-            # check if user wants another calculation
-            # break the while loop if answer is no
-            next_calculation = input("Let's do next calculation? (yes/no): ")
-            next_calculation = next_calculation.lower()
-            if next_calculation == "no":
-                while True:
-                    s = input("Are you sure? (yes/no):")
-                    s = s.lower()
-                    if s == "yes" :
-                        logger.debug("--PROGRAM END--")
-                        print("--Exit Program")
-                        exit(1)
-                    elif s == "no" :
-                        break
-                    else :
-                        print("Invalid Input")
-            elif next_calculation == "yes" :
-                break
-            else:
-                print("Invalid Input")
-                continue
+    while True:
+        # check if user wants another calculation
+        # break the while loop if answer is no
+        next_calculation = input("Let's do next calculation? (yes/no): ")
+        next_calculation = next_calculation.lower()
+        
+        if next_calculation == "no":
+            while True:
+                s = input("Are you sure? (yes/no):")
+                s = s.lower()
+                if s == "yes" :
+                    logger.debug("--PROGRAM END--")
+                    print("--Exit Program")
+                    exit(1)
+                elif s == "no" :
+                    break
+                else :
+                    logger.debug("Invalid Input in exit check again")
+                    print("Invalid Input")
+        elif next_calculation == "yes" :
+            break
+        else:
+            logger.debug("Invalid Input in next calculation check")
+            print("Invalid Input")
+            continue
 
-            break  # Are you sure? 에서 no가 입력되었을때만 작동
+        break  # Are you sure? 에서 no가 입력되었을때만 작동
