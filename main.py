@@ -52,9 +52,20 @@ while True:
             next_calculation = input("Let's do next calculation? (yes/no): ")
             next_calculation = next_calculation.lower()
             if next_calculation == "no":
-                print("Exit Program")
-                exit(1)
+                while True:
+                    s = input("Are you sure? (yes/no):")
+                    s = s.lower()
+                    if s == "yes" :
+                        print("--Exit Program")
+                        exit(1)
+                    elif s == "no" :
+                        break
+                    else :
+                        print("Invalid Input")
             elif next_calculation == "yes" :
                 break
             else:
                 print("Invalid Input")
+                continue
+
+            break  # Are you sure? 에서 no가 입력되었을때만 작동
