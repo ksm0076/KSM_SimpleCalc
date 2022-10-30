@@ -36,7 +36,7 @@ while True:
     if choice in ('1', '2', '3', '4'):
         num1 = float(input("Enter first number: "))
         num2 = float(input("Enter second number: "))
-
+        
         if choice == '1':
             print(num1, "+", num2, "=", Add.add(num1, num2))
             m = str(num1) + " + " + str(num2) + " = " + str(Add.add(num1,num2))
@@ -50,15 +50,16 @@ while True:
             m = str(num1) + " * " + str(num2) + " = " + str(Multiply.multiply(num1, num2))
             logger.debug(m)
         elif choice =='4':
-            while num2 == 0 :
+            while num2 == 0 :   # 0으로 나누려고 할 때
                 logger.debug("Try divide by zero")
                 print("Can't divide by zero")
-                num2 = float(input("Enter second number: "))
+                num2 = float(input("Enter second number: "))    # num2 가 0 아니면 탈출
             print(num1, "/", num2, "=", Divide.divide(num1,num2))
             m = str(num1) + " / " + str(num2) + " = " + str(Divide.divide(num1,num2))
             logger.debug(m)
     else:   # 1, 2, 3, 4 이외의 입력
-        logger.debug("Invalid Input in operation choice")
+        m = "Invalid Input in operation choice / Input : " + choice
+        logger.debug(m)
         print("Invalid Input")
         continue
     
@@ -68,26 +69,28 @@ while True:
         # check if user wants another calculation
         # break the while loop if answer is no
         next_calculation = input("Let's do next calculation? (yes/no): ")
-        next_calculation = next_calculation.lower()
+        next_calculation2 = next_calculation.lower()    # 대소문자 구분없게 만들기
         
-        if next_calculation == "no":
+        if next_calculation2 == "no":
             while True:
                 s = input("Are you sure? (yes/no):")
-                s = s.lower()
-                if s == "yes" :
+                s2 = s.lower()  # 대소문자 구분없게 만들기
+                if s2 == "yes" :
                     logger.debug("--PROGRAM END--")
                     print("--Exit Program")
                     exit(1)
-                elif s == "no" :
+                elif s2 == "no" :
                     break
-                else :
-                    logger.debug("Invalid Input in exit check again")
+                else :  # yes/no 이외의 입력이 들어왔을 때
+                    m = "Invalid Input in exit check again / Input : " + s
+                    logger.debug(m)
                     print("Invalid Input")
-        elif next_calculation == "yes" :
+        elif next_calculation2 == "yes" : # while문 탈출, Select operation으로 이동
             break
-        else:
-            logger.debug("Invalid Input in next calculation check")
+        else:   # yes/no 이외의 입력이 들어왔을 때
+            m = "Invalid Input in next calculation check / Input : " + next_calculation
+            logger.debug(m)
             print("Invalid Input")
-            continue
+            continue    # Let's do next calculation? (yes/no): 로 이동 (while문 탈출 못함)
 
         break  # Are you sure? 에서 no가 입력되었을때만 작동
