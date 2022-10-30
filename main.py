@@ -5,6 +5,19 @@ from Func import Subtract
 from Func import Multiply
 from Func import Divide
 
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter(u'%(asctime)s [%(levelname)s] %(message)s')
+
+file_handler = logging.FileHandler('log.log')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
+logger.debug("--PROGRAM START--")
 
 print("Select operation.")
 print("1.Add")
@@ -48,6 +61,7 @@ while True:
                     s = input("Are you sure? (yes/no):")
                     s = s.lower()
                     if s == "yes" :
+                        logger.debug("--PROGRAM END--")
                         print("--Exit Program")
                         exit(1)
                     elif s == "no" :
